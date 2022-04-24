@@ -17,5 +17,15 @@
   "https://deno.land/x/ptera@v1.0.2/timezone.ts": "4871b64bb0d5e01a968c51dbc34e724a5526149acfb5097f410dfb970bf505cb",
   "https://deno.land/x/ptera@v1.0.2/types.ts": "24b378ccf1f8e1783022ffe96312ef7c12deb39a62aa33832a3c3555954e663b",
   "https://deno.land/x/ptera@v1.0.2/utils.ts": "1651c7740fef85901af34bbfcd8d9bd467a4313b5a4d5074e2603f989f1ee77a",
-  "https://deno.land/x/ptera@v1.0.2/zoned_time.ts": "d0578c18b534625c157eaea6daa88c71708b801f03793a05bc48ba492044191e"
+  "https://deno.land/x/ptera@v1.0.2/zoned_time.ts": "d0578c18b534625c157eaea6daa88c71708b801f03793a05bc48ba492044191e",
+  "https://deno.land/x/zod@v3.14.4/ZodError.ts": "91c2e96ce9b6eb3448c788090817659a2f426ec79a4e41dad6b5a93fc35f595d",
+  "https://deno.land/x/zod@v3.14.4/external.ts": "433e13ff774fef22d416027308db33cacb719774898372ec5faa32bb572f11dc",
+  "https://deno.land/x/zod@v3.14.4/helpers/errorUtil.ts": "7a77328240be7b847af6de9189963bd9f79cab32bbc61502a9db4fe6683e2ea7",
+  "https://deno.land/x/zod@v3.14.4/helpers/parseUtil.ts": "2611b41b579f551fcf0799415f9793709637bc7c7778bf53aab73cea92e859db",
+  "https://deno.land/x/zod@v3.14.4/helpers/partialUtil.ts": "8dc921a02b47384cf52217c7e539268daf619f89319b75bdf13ea178815725df",
+  "https://deno.land/x/zod@v3.14.4/helpers/typeAliases.ts": "a1a8d039eb98925f242f5ea1e21e6d3cabd7f05e9747680165c914695c979b4f",
+  "https://deno.land/x/zod@v3.14.4/helpers/util.ts": "28dc23a1160ef0178b5e4144a90cd310227e8c0a065203e72a7ffee70dfb1ab4",
+  "https://deno.land/x/zod@v3.14.4/index.ts": "035a7422d9f2be54daa0fe464254b69225b443000673e4794095d672471e8792",
+  "https://deno.land/x/zod@v3.14.4/mod.ts": "64e55237cb4410e17d968cd08975566059f27638ebb0b86048031b987ba251c4",
+  "https://deno.land/x/zod@v3.14.4/types.ts": "7829a9fe28910b928e13de4b1b7ae72798ab09934daf69f3ef9d7ce52d0d5663"
 }
