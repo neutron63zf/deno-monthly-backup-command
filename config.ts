@@ -1,6 +1,7 @@
 import * as z from "zod";
+import { readAllSync } from "streams/conversion.ts";
 
-const ENV_JSON_PATH = "./env.json";
+const ENV_JSON_PATH = "./.env.json";
 
 type JSONValuedType =
   | null
@@ -13,7 +14,16 @@ type JSONValuedType =
   | JSONValuedType[];
 
 export const readJSON = (filePath: string): JSONValuedType => {
-  const text = Deno.readTextFileSync(filePath);
+  const file = Deno.openSync(filePath, {
+    read: true,
+    write: true,
+    create: true,
+  });
+  const decoder = new TextDecoder("utf-8");
+  const content = readAllSync(file);
+  Deno.close(file.rid);
+  const text = decoder.decode(content) || "";
+  console.log("text:", text);
   return JSON.parse(text);
 };
 

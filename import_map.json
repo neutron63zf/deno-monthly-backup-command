@@ -1,7 +1,9 @@
 {
   "imports": {
+    "fs/": "https://deno.land/std@0.136.0/fs/",
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     "testing/": "https://deno.land/std@0.136.0/testing/",
-    "zod": "https://deno.land/x/zod@v3.14.4/mod.ts"
+    "zod": "https://deno.land/x/zod@v3.14.4/mod.ts",
+    "streams/": "https://deno.land/std@0.136.0/streams/"
   }
 }
