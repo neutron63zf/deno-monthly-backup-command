@@ -1,4 +1,4 @@
-import { DateTime } from "./deps/datetime.ts";
+import type { DateTime } from "ptera";
 
 export const shouldBackup = (
   lastBackupDate: DateTime,

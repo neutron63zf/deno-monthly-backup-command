@@ -3,6 +3,8 @@
   "https://deno.land/std@0.136.0/testing/_diff.ts": "d8743b5c15d34eb58ae7e4ad43295ee1c7a935029b460a056d901f3aefcead45",
   "https://deno.land/std@0.136.0/testing/_format.ts": "0d8dc79eab15b67cdc532826213bbe05bccfd276ca473a50a3fc7bbfb7260642",
   "https://deno.land/std@0.136.0/testing/asserts.ts": "61d85fc80f548a6e1e66d93fb7874a2c9e097aeecc00643c5f4f340370cde56f",
+  "https://deno.land/x/dotenv@v3.2.0/mod.ts": "077b48773de9205266a0b44c3c3a3c3083449ed64bb0b6cc461b95720678d38e",
+  "https://deno.land/x/dotenv@v3.2.0/util.ts": "693730877b13f8ead2b79b2aa31e2a0652862f7dc0c5f6d2f313f4d39c7b7670",
   "https://deno.land/x/ptera@v1.0.2/constants.ts": "61659e7f70136d73e0215d373fa815427f424a8b1596bf88ba62da4f542b4c2a",
   "https://deno.land/x/ptera@v1.0.2/convert.ts": "f4251fd3f46b7924fc70f2e81c13eeee9123897478b309e3117cc8b421386c81",
   "https://deno.land/x/ptera@v1.0.2/datetime.ts": "fd6bd0e6bc8cb6ddd21416d7f9bde6fca93d0a6de17dfad676ce79af1cd667a3",

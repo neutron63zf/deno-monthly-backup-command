@@ -1,3 +1,2 @@
-Deno.run({
-  cmd: ["echo", "Hello World; echo run"],
-});
+import { config } from "dotenv";
+console.log(config());

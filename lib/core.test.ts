@@ -1,6 +1,6 @@
-import { assertEquals } from "./deps/asserts.ts";
+import { assertEquals } from "testing/asserts.ts";
 import { shouldBackup } from "./core.ts";
-import { datetime } from "./deps/datetime.ts";
+import { datetime } from "ptera";
 
 Deno.test("should run backup", () => {
   const lastBackupDate = datetime("2022-04-30");
