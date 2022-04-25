@@ -1,5 +1,6 @@
 {
   "imports": {
+    "cliffy": "https://deno.land/x/cliffy@v0.23.0/mod.ts",
     "fs/": "https://deno.land/std@0.136.0/fs/",
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     "streams/": "https://deno.land/std@0.136.0/streams/",

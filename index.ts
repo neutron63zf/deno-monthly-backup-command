@@ -3,7 +3,7 @@ import { shouldBackup } from "./core.ts";
 import { writeResult } from "./config.ts";
 import { readEnv } from "./config.ts";
 
-const main = async () => {
+export const main = async () => {
   const env = readEnv();
   const shells = env
     .filter((e) => {
@@ -30,4 +30,4 @@ const main = async () => {
   writeResult(result);
 };
 
-main();
+// main();
