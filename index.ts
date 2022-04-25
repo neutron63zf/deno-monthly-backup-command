@@ -1,11 +1,19 @@
+import { datetime } from "ptera";
+import { shouldBackup } from "./core.ts";
 import { writeResult } from "./config.ts";
 import { readEnv } from "./config.ts";
 
 const main = async () => {
   const env = readEnv();
-  const commands = env.map((e) => e.command);
-  const processes = commands.map(async (command) => {
-    const p = Deno.run({ cmd: [command] });
+  const shells = env
+    .filter((e) => {
+      const latestDate = datetime(e.date);
+      const now = datetime();
+      return shouldBackup(latestDate, now);
+    })
+    .map((e) => e.shell);
+  const processes = shells.map(async (shell) => {
+    const p = Deno.run({ cmd: ["zsh", shell] });
     const status = await p.status();
     p.close();
     if (!status.success) {
@@ -14,7 +22,7 @@ const main = async () => {
       console.error("execution failed", errorString);
     }
     return {
-      command,
+      shell,
       isOk: status.success,
     };
   });

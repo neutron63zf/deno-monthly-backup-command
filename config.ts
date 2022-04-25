@@ -1,7 +1,8 @@
 import * as z from "zod";
 import { readAllSync } from "streams/conversion.ts";
 
-const ENV_JSON_PATH = "./.env.json";
+const ENV_JSON_PATH =
+  Deno.env.get("MONTHLY_BACKUP_ENV_JSON_PATH") || "./.env.json";
 
 type JSONValuedType =
   | null
@@ -33,13 +34,13 @@ export const writeJSON = (filePath: string, data: JSONValuedType): void => {
 };
 
 const envSchema = z.object({
-  FULL_BACKUP_COMMANDS: z.array(z.string()),
+  FULL_BACKUP_SHELL: z.array(z.string()),
   LATEST_BACKUP_DATE_FILE: z.string(),
 });
 
 const latestDateSchema = z.array(
   z.object({
-    command: z.string(),
+    shell: z.string(),
     date: z.string(),
   })
 );
@@ -51,11 +52,11 @@ export const readEnv = () => {
   const latestDates = latestDateSchema.parse(
     readJSON(env.LATEST_BACKUP_DATE_FILE)
   );
-  return env.FULL_BACKUP_COMMANDS.map((command) => {
-    const latestDate = latestDates.find((d) => d.command == command);
+  return env.FULL_BACKUP_SHELL.map((shell) => {
+    const latestDate = latestDates.find((d) => d.shell == shell);
     if (latestDate === undefined) {
       return {
-        command,
+        shell,
         date: new Date(0).toISOString(),
       };
     }
@@ -64,7 +65,7 @@ export const readEnv = () => {
 };
 
 export type Result = {
-  command: string;
+  shell: string;
   isOk: boolean;
 }[];
 
@@ -73,10 +74,10 @@ export const writeResult = (result: Result) => {
   const latestDatesPath = env.LATEST_BACKUP_DATE_FILE;
   const latestDates = latestDateSchema.parse(readJSON(latestDatesPath));
   const data: LatestDate = result.map((r) => ({
-    command: r.command,
+    shell: r.shell,
     date: r.isOk
       ? new Date().toISOString()
-      : latestDates.find((d) => d.command === r.command)?.date || "",
+      : latestDates.find((d) => d.shell === r.shell)?.date || "",
   }));
   writeJSON(latestDatesPath, data);
 };
