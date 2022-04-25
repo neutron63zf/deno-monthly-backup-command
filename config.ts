@@ -24,12 +24,13 @@ export const readJSON = (filePath: string): JSONValuedType => {
   const content = readAllSync(file);
   Deno.close(file.rid);
   const text = decoder.decode(content) || "";
-  console.log("text:", text);
+  console.log("read file:", filePath, "\ncontent:", text);
   return JSON.parse(text);
 };
 
 export const writeJSON = (filePath: string, data: JSONValuedType): void => {
   const text = JSON.stringify(data, null, "\t");
+  console.log("write file:", filePath, "\ncontent:", text);
   Deno.writeTextFileSync(filePath, text);
 };
 
@@ -69,15 +70,29 @@ export type Result = {
   isOk: boolean;
 }[];
 
+// merge b into a (overwrite)
+const mergeTwoLatestDates = (a: LatestDate, b: LatestDate): LatestDate => {
+  const map = new Map<string, LatestDate[number]>();
+  [...a, ...b].forEach((e) => {
+    const shell = e.shell;
+    map.set(shell, e);
+  });
+  const result = [...map.values()];
+  return result;
+};
+
 export const writeResult = (result: Result) => {
   const env = envSchema.parse(readJSON(ENV_JSON_PATH));
   const latestDatesPath = env.LATEST_BACKUP_DATE_FILE;
-  const latestDates = latestDateSchema.parse(readJSON(latestDatesPath));
+  const latestDates: LatestDate = latestDateSchema.parse(
+    readJSON(latestDatesPath)
+  );
   const data: LatestDate = result.map((r) => ({
     shell: r.shell,
     date: r.isOk
       ? new Date().toISOString()
       : latestDates.find((d) => d.shell === r.shell)?.date || "",
   }));
-  writeJSON(latestDatesPath, data);
+  const writeData = mergeTwoLatestDates(latestDates, data);
+  writeJSON(latestDatesPath, writeData);
 };
