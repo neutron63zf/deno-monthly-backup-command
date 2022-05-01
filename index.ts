@@ -15,12 +15,12 @@ export const main = async () => {
   const processes = shells.map(async (shell) => {
     const p = Deno.run({ cmd: ["zsh", shell] });
     const status = await p.status();
-    p.close();
     if (!status.success) {
       const rawError = await p.stderrOutput();
       const errorString = new TextDecoder().decode(rawError);
       console.error("execution failed", errorString);
     }
+    p.close();
     return {
       shell,
       isOk: status.success,
