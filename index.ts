@@ -14,9 +14,11 @@ export const main = async () => {
     .map((e) => e.shell);
   const processes = shells.map(async (shell) => {
     const p = Deno.run({ cmd: ["zsh", shell] });
-    const status = await p.status();
+    const [status, rawError] = await Promise.all([
+      p.status(),
+      p.stderrOutput(),
+    ]);
     if (!status.success) {
-      const rawError = await p.stderrOutput();
       const errorString = new TextDecoder().decode(rawError);
       console.error("execution failed", errorString);
     }
