@@ -13,7 +13,7 @@ export const main = async () => {
     })
     .map((e) => e.shell);
   const processes = shells.map(async (shell) => {
-    const p = Deno.run({ cmd: ["zsh", shell] });
+    const p = Deno.run({ cmd: ["zsh", shell], stderr: "piped" });
     const [status, rawError] = await Promise.all([
       p.status(),
       p.stderrOutput(),
